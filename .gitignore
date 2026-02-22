@@ -1,0 +1,25 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Packaging and distribution
+build/
+dist/
+*.egg-info/
+
+# Development environments
+.venv/
+.vscode/
+
+# Testing
+.pytest_cache/
+.coverage
+
+# Project specific data and results
+benchmark_results/
+datasets/
+__taichi_cache__/
+
+# OS files
+.DS_Store
+Thumbs.db
