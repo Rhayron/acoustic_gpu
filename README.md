@@ -691,26 +691,26 @@ The pipeline was inspected and validated against a real full matrix capture (FMC
 
 **University of Bristol — TFM Python Example**
 
-**Repositório:** [`ultrasunix/total-focusing-method-2d-python-example`](https://github.com/ultrasunix/total-focusing-method-2d-python-example)
+**Repository:** [`ultrasunix/total-focusing-method-2d-python-example`](https://github.com/ultrasunix/total-focusing-method-2d-python-example)
 
-| Parâmetro | Valor |
+| Parameter | Value |
 |---|---|
-| Transdutor | 18 elementos, linear, 5 MHz |
-| Material | Aço carbono (mild steel), 50mm espessura |
-| Defeito | SDH (Side-Drilled Hole) a 25mm de profundidade |
-| Velocidade | 5850 m/s (longitudinal) |
-| Formato | Python-ready (NumPy/pickle) |
-| Tipo de inspeção | Contato direto |
-| Código TFM incluso | Sim (interpolação e nearest-point) |
+| Transducer | 18 elements, linear, 5 MHz |
+| Material | Carbon steel (mild steel), 50mm thickness |
+| Defect | SDH (Side-Drilled Hole) at 25mm depth |
+| Velocity | 5850 m/s (longitudinal) |
+| Format | Python-ready (NumPy/pickle) |
+| Inspection Type | Direct contact |
+| TFM Code Included | Yes (interpolation and nearest-point) |
 
-**Como usar:**
+**How to use:**
 ```python
-# 1. Clonar o repositório
+# 1. Clone the repository
 # git clone https://github.com/ultrasunix/total-focusing-method-2d-python-example.git
 
-# 2. Carregar os dados FMC (formato do repositório)
-# 3. Processar com acoustic_gpu usando FlatSurface(z_offset=0) e c1=c2=5850
-# 4. Comparar imagem TFM com a referência do repositório
+# 2. Load FMC data (repository format)
+# 3. Process with acoustic_gpu using FlatSurface(z_offset=0) and c1=c2=5850
+# 4. Compare TFM image with the reference from the repository
 ```
 
 **Comparative Metrics:**
