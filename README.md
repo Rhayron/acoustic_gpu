@@ -687,7 +687,37 @@ print(f"Peak: ({x_coords[peak_idx[1]]*1e3:.2f}, {z_coords[peak_idx[0]]*1e3:.2f})
 
 ### 8.4 Validation with Real Data (Bristol TFM Dataset)
 
-The pipeline was inspected and validated against a real full matrix capture (FMC) dataset provided by the **University of Bristol**. The data consists of a practical test (contact mode) on a 50 mm thick carbon steel block with a side-drilled hole (SDH) defect at a nominal depth of 25 mm. An 18-element transducer with a 5 MHz center frequency was used.
+The pipeline was inspected and validated against a real full matrix capture (FMC) dataset provided by the **University of Bristol**.
+
+**University of Bristol — TFM Python Example (RECOMENDADO)**
+
+**Repositório:** [`ultrasunix/total-focusing-method-2d-python-example`](https://github.com/ultrasunix/total-focusing-method-2d-python-example)
+
+| Parâmetro | Valor |
+|---|---|
+| Transdutor | 18 elementos, linear, 5 MHz |
+| Material | Aço carbono (mild steel), 50mm espessura |
+| Defeito | SDH (Side-Drilled Hole) a 25mm de profundidade |
+| Velocidade | 5850 m/s (longitudinal) |
+| Formato | Python-ready (NumPy/pickle) |
+| Tipo de inspeção | Contato direto |
+| Código TFM incluso | ✅ Sim (interpolação e nearest-point) |
+
+**Compatibilidade com o projeto:** ⭐⭐⭐⭐ (excelente)
+- ✅ Dados FMC reais em formato Python
+- ✅ Defeito com posição conhecida (ground truth)
+- ✅ Código TFM de referência para comparação
+- ⚠️ Inspeção por contato (não imersão) — mas pode ser adaptado tratando como superfície plana com c₁ = c₂
+
+**Como usar:**
+```python
+# 1. Clonar o repositório
+# git clone https://github.com/ultrasunix/total-focusing-method-2d-python-example.git
+
+# 2. Carregar os dados FMC (formato do repositório)
+# 3. Processar com acoustic_gpu usando FlatSurface(z_offset=0) e c1=c2=5850
+# 4. Comparar imagem TFM com a referência do repositório
+```
 
 **Comparative Metrics:**
 
