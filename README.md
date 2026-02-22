@@ -689,7 +689,7 @@ print(f"Peak: ({x_coords[peak_idx[1]]*1e3:.2f}, {z_coords[peak_idx[0]]*1e3:.2f})
 
 The pipeline was inspected and validated against a real full matrix capture (FMC) dataset provided by the **University of Bristol**.
 
-**University of Bristol — TFM Python Example (RECOMENDADO)**
+**University of Bristol — TFM Python Example**
 
 **Repositório:** [`ultrasunix/total-focusing-method-2d-python-example`](https://github.com/ultrasunix/total-focusing-method-2d-python-example)
 
@@ -701,13 +701,7 @@ The pipeline was inspected and validated against a real full matrix capture (FMC
 | Velocidade | 5850 m/s (longitudinal) |
 | Formato | Python-ready (NumPy/pickle) |
 | Tipo de inspeção | Contato direto |
-| Código TFM incluso | ✅ Sim (interpolação e nearest-point) |
-
-**Compatibilidade com o projeto:** ⭐⭐⭐⭐ (excelente)
-- ✅ Dados FMC reais em formato Python
-- ✅ Defeito com posição conhecida (ground truth)
-- ✅ Código TFM de referência para comparação
-- ⚠️ Inspeção por contato (não imersão) — mas pode ser adaptado tratando como superfície plana com c₁ = c₂
+| Código TFM incluso | Sim (interpolação e nearest-point) |
 
 **Como usar:**
 ```python
@@ -723,8 +717,8 @@ The pipeline was inspected and validated against a real full matrix capture (FMC
 
 | Metric | Bristol Reference (Interpolation) | `acoustic_gpu` Pipeline | Comparison |
 |---|---|---|---|
-| **Peak (SDH Location)** | (-0.25, 26.47) mm | (-0.25, 26.47) mm | ✅ **Exact** |
-| **Z-Error vs Ground Truth** | 1.47 mm | 1.47 mm | ✅ **Identical** |
+| **Peak (SDH Location)** | (-0.25, 26.47) mm | (-0.25, 26.47) mm | **Exact** |
+| **Z-Error vs Ground Truth** | 1.47 mm | 1.47 mm | **Identical** |
 | **Lateral Resolution (-6dB)**| - | 1.01 mm | - |
 | **Axial Resolution (-6dB)** | - | 0.42 mm | - |
 | **Image SNR** | - | 6.6 dB | - |
