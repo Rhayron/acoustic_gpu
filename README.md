@@ -705,23 +705,23 @@ The pipeline was inspected and validated against a real full matrix capture (FMC
 
 1. **Direct TFM Comparison (`Bristol` vs `acoustic_gpu`)**
 Both methods locate the defect accurately at the expected position.
-<img src="benchmark_results/01_tfm_comparison.png" alt="TFM Comparison" width="800"/>
+<img src="assets/01_tfm_comparison.png" alt="TFM Comparison" width="800"/>
 
 2. **FMC Data Analysis (B-Scan, A-Scan and Spectrum)**
 Echoes (SDH hyperbolas in B-scan) and the central pulse attest to data integrity under 5 MHz bandwidth.
-<img src="benchmark_results/02_fmc_analysis.png" alt="FMC Analysis" width="800"/>
+<img src="assets/02_fmc_analysis.png" alt="FMC Analysis" width="800"/>
 
 3. **High Resolution Profile and Analytical SDH Characterization**
 Direct profiles along crossed axes on the defect allowing measurement of lobes at -6 dB.
-<img src="benchmark_results/04_detailed_analysis.png" alt="Detailed Analysis" width="800"/>
+<img src="assets/04_detailed_analysis.png" alt="Detailed Analysis" width="800"/>
 
 4. **$O(N)$ Computational Scaling Behavior**
 Increased grid resolution reflects linearity in calculation load.
-<img src="benchmark_results/03_resolution_scaling.png" alt="Resolution Scaling" width="800"/>
+<img src="assets/03_resolution_scaling.png" alt="Resolution Scaling" width="800"/>
 
 5. **Example of Mapped Geometric TOF Matrices**
 Correctly projected isochrone spread from different piezoelectric crystals of the tested grid.
-<img src="benchmark_results/05_tof_tables.png" alt="TOF Tables" width="800"/>
+<img src="assets/05_tof_tables.png" alt="TOF Tables" width="800"/>
 
 ---
 
