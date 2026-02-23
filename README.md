@@ -31,16 +31,22 @@
 **Main Components:**
 
 ```
-acoustic_gpu/
-├── config.py          → Materials, transducer, ROI
-├── surfaces/          → Surface geometry (flat, tubular, irregular)
+src/acoustic_gpu/
+├── config.py          → Configuration (Materials, Transducer, ROI, Simulation)
+├── surfaces/          → Surface geometric modeling
+│   ├── base.py        → Abstract interface for surfaces
+│   ├── flat.py        → Flat and tilted surfaces
+│   ├── tubular.py     → Cylindrical/tubular geometry
+│   ├── irregular.py   → Interpolated/measured profiles
+│   └── estimation.py  → Surface estimation from echoes
+├── raytracing/        → Refraction algorithms
 │   ├── cpu_ref.py     → Reference CPU implementation
 │   └── kernels.py     → GPU Kernels (Taichi Lang)
 ├── imaging/
 │   └── tfm.py         → TFM Reconstruction (GPU + CPU)
 └── utils/
     ├── synthetic.py   → FMC synthetic data generation
-    └── visualization.py → Visualization functions
+    └── visualization.py → Visualization and plotting
 ```
 
 ---
@@ -124,7 +130,7 @@ where $s_{ij}$ is the FMC signal of the pair (transmitter $i$, receiver $j$), an
 
 ```bash
 # Clone or copy the project
-cd gpu/
+cd acoustic_gpu/
 
 # Create virtual environment
 python -m venv .venv
@@ -154,26 +160,26 @@ ti.init(arch=ti.gpu)  # Use CUDA/Vulkan if available
 ## 4. Pipeline Architecture
 
 ```
-┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
-│  Configuration   │     │     Surface      │     │    Ray-Tracing   │
-│  (Material,      │───▶ │  (Flat,          │───▶ │  (CPU or GPU)    │
-│   Transducer,    │     │   Tubular,       │     │                  │
-│   ROI)           │     │   Irregular)     │     │    TOF Table     │
-└──────────────────┘     └──────────────────┘     └────────┬─────────┘
-                                                           │
-┌──────────────────┐                                       │
-│    FMC Data      │                                       ▼
-│    (Real or      │──────────────────────▶   ┌──────────────────┐
-│    Synthetic)    │                           │       TFM        │
-└──────────────────┘                           │  Reconstruction  │
-                                               │    (GPU/CPU)     │
-                                               └────────┬─────────┘
-                                                        │
-                                                        ▼
-                                               ┌──────────────────┐
-                                               │   Visualization  │
-                                               │    (dB Image)    │
-                                               └──────────────────┘
+┌──────────────────┐      ┌──────────────────┐      ┌──────────────────┐
+│  Configuration   │      │     Surface      │      │    Ray-Tracing   │
+│  (Material,      │────▶ │  (Flat, Tubular, │────▶ │  (CPU or GPU)    │
+│   Transducer,    │      │   Irregular)     │      │                  │
+│   ROI, Sim)      │      └────────▲─────────┘      │    TOF Table     │
+└──────────────────┘               │                └────────┬─────────┘
+                                   │                         │
+┌──────────────────┐      ┌────────┴─────────┐               │
+│    FMC Data      │────▶ │     Surface      │               ▼
+│    (Real or      │      │    Estimation    │      ┌──────────────────┐
+│    Synthetic)    │────▶ │   (Time-base)    │────▶ │       TFM        │
+└──────────────────┘      └──────────────────┘      │  Reconstruction  │
+                                                    │    (GPU/CPU)     │
+                                                    └────────┬─────────┘
+                                                             │
+                                                             ▼
+                                                    ┌──────────────────┐
+                                                    │   Visualization  │
+                                                    │    (dB Image)    │
+                                                    └──────────────────┘
 ```
 
 ---
